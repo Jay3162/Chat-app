@@ -1,13 +1,266 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0px;
+  padding: 0px;
+  color: 	#99aab5;
+  font-family: sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.chat-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100vh;
+}
+
+.users-list {
+  /* display: flex;
+  flex-direction: column; */
+  display: grid;
+  grid-template-columns: 1fr;
+
+  background-color:#23272a;
+  
+}
+
+.user {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-pic {
+  height: 64px;
+  width: 64px;
+  margin-right: 0.5vw;
+}
+
+.user-msg {
+  display: flex;
+  align-items: center;
+}
+
+.body-container, .chatbar {
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.body-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+}
+
+.chatbar {
+  margin-bottom: 5vh;
+}
+
+.body-container {
+  background-color:#2c2f33;
+
+}
+
+
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbar {
+  display: flex;
+}
+
+.inputbar {
+  border-radius: 15px 0px 0px 15px;
+  width: 60vw;
+  border-style: none;
+  padding: 15px;
+  background-color: #ccc;
+}
+
+.sendbtn {
+  border-radius: 0px 15px 15px 0px;
+  border-style: none;
+  background-color: rgb(165, 163, 163);
+}
+
+.inputbar:focus {
+  border: 2px solid rgb(114, 114, 114);
+}
+
+.channel-container{
+  background-color:#23272a;
+}
+
+.reg-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../public/images/discord-bg-image.webp");
+  background-size: cover;
+  background-position: center center;
+}
+
+.log-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../public/images/discord-log-image.png");
+  background-size: cover;
+  background-position: center center;
+}
+
+.reg-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #23272a;
+  padding: 2vw;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.reg-form h2 {
+  font-weight: 400;
+  text-align: center;
+}
+
+.reg-form input {
+  height: 4.5vh;
+  width: 25vw;
+  margin-top: 1vh;
+  margin-bottom: 2vh;
+  background-color: #2c2f33;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0px;
+}
+
+.reg-form input:focus {
+  border-style: none;
+  outline: none;
+  border: 1px solid #7289da;
+}
+
+.reg-btn {
+  height: 5.5vh;
+  width: 25.5vw;
+  background-color: #7289da;
+  border-style: none;
+  border-radius: 3px;
+  font-weight: 700;
+  color: 	#ffffff;
+  margin-bottom: 0.5vh;
+}
+
+.reg-btn:hover {
+  cursor: pointer;
+}
+
+.reg-container a {
+  color: #7289da;
+  font-weight: 700;
+  font-size: 0.8vw;
+}
+
+.reg-container a:hover {
+  cursor: pointer;
+}
+
+.log-reg {
+  display: flex;
+  font-weight: 700;
+  flex-direction: row;
+}
+
+.desk-log-btn:hover {
+  cursor: pointer;
+}
+
+.log-reg p {
+  color: #ffffff;
+}
+
+.log-reg a {
+  color: #7289da
+}
+
+.log-reg a:hover {
+  cursor: pointer;
+}
+
+.desk-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  width: 100vw;
+  background-image: url("../public/images/discord-sec-bg.png");
+  background-size: cover;
+}
+
+.desk-header {
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
+  margin-top: 5vh;
+  margin-bottom: 25vh;
+}
+
+.desk-header a{
+  text-decoration: none;
+  color: #99aab5;
+}
+
+.desk-form.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.desk-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.desk-input {
+  width: 25vw;
+  height: 0vh;
+  border-radius: 50px;
+  padding: 2vw;
+  border-style: none;
+}
+
+.desk-btn {
+  width: 3vw;
+  border-style: none;
+  background-color: #7289da;
+  border-radius: 15px;
+  color: #ffffff;
+  /* padding-top: 1vh; */
+  font-size: 1.5vw;
+  margin-left: -4vw;
+}
+
+.desk-btn:hover {
+  cursor: pointer;
+}
+
+.desk-log-btn {
+  width: 5vw;
+  border-radius: 20px;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  text-align: center;
+  background-color: #7289da;
+  color: #ffffff;
+  border-style: none;
 }
