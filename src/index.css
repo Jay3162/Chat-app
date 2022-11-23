@@ -47,7 +47,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 100vh;
+  height: 100%;
 }
 
 .chatbar {
@@ -263,4 +263,96 @@ body {
   background-color: #7289da;
   color: #ffffff;
   border-style: none;
+}
+
+/* Profile CSS */
+
+.prof-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  background-color: #2c2f33;
+
+}
+
+.prof-settings ul {
+  text-decoration: none;
+}
+
+.prof-settings {
+  background-color: #23272a;
+  height: 100vh;
+}
+
+.prof-main {
+  margin: 2vw;
+}
+
+.prof-banner {
+  background-color: red;
+  height: 15vh;
+  width: auto;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.prof-inner {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.img-container {
+  background-image: url("../public/images/placeholder-profile-pic.png");
+  height: 64px;
+  width: 64px;  
+  background-size: cover;
+}
+
+.prof-inner-left {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.edit-btn-wrapper {
+  display: flex;
+  height: auto;
+  align-items: center;
+}
+
+.prof-info-wrapper {
+  background-color: #1c1d1f;
+  border-radius: 20px;
+  padding-bottom: 0.1vh;
+}
+
+.prof-info {
+  background-color: #23272a;
+  border-radius: 15px;
+  margin: 1.5vw;
+  margin-bottom: 1vh;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+}
+
+.username, .email, .phone {
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+  margin: 2vw;
+}
+
+.prof-edit {
+  background-color: #99aab5;
+  border-style: none;
+  border-radius: 15px;
+  color: #ffffff;
+  padding: 2vh 2vw;
+}
+
+.pw-btn {
+  background-color: #7289da;
+  border-style: none;
+  border-radius: 15px;
+  color: #ffffff;
 }

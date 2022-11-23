@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import socketIO, { Socket } from 'socket.io-client';
 import Register from './pages/signup';
 import Login from './pages/login';
+import Profile from './pages/profile';
 
 const socket = socketIO.connect("http://localhost:4000");
 console.log(socket.on)
@@ -17,6 +18,7 @@ function App() {
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/chat" element={<MainChat socket={socket}/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -10,22 +10,21 @@ export default function Body({socket, messages}) {
         localStorage.removeItem("username")
         navigate("/")
         window.location.reload();
-        
     }
     return (
         <div className="body-container">
             {messages.map(message => (
-                message.name === localStorage.getItem("userName") ? (
-                <div className="user-msg">
+                message.name === localStorage.getItem("username") ? (
+                <div className="user-msg" key={message.id}>
                     <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
-                <div className="user-inner" key={message.id}>
-                    <p>You</p>
-                    <p>{message.text}</p>
-                </div>
-            </div>) : (
-            <div className="user-msg">
+                    <div className="user-inner">
+                        <p>You</p>
+                        <p>{message.text}</p>
+                    </div>
+                </div>) : (
+            <div className="user-msg" key={message.id}>
                 <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
-                <div className="user-inner" key={message.id}>
+                <div className="user-inner" >
                     <p>{message.name}</p>
                     <p>{message.text}</p>
                 </div>
