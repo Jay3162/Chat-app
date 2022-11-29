@@ -4,9 +4,9 @@ import Chatusers from './chatusers';
 
 export default function MainChat ({socket}) {
     const [messages, setMessages] = useState([])
-
     useEffect(() => {
         socket.on("chatResponse", data => setMessages([...messages, data]))
+        
     })
     return (
         <div className="chat-container">

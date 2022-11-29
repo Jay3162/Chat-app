@@ -8,7 +8,7 @@ body {
 
 .chat-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1.5fr;
   height: 100vh;
 }
 
@@ -17,6 +17,7 @@ body {
   flex-direction: column; */
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 14fr 1fr;
 
   background-color:#23272a;
   
@@ -124,6 +125,7 @@ body {
   padding: 2vw;
   border-radius: 4px;
   color: #ffffff;
+  text-decoration: none;
 }
 
 .reg-form h2 {
@@ -157,6 +159,10 @@ body {
   font-weight: 700;
   color: 	#ffffff;
   margin-bottom: 0.5vh;
+}
+
+.desk-span-el {
+  font-size: 1vw;
 }
 
 .reg-btn:hover {
@@ -263,6 +269,7 @@ body {
   background-color: #7289da;
   color: #ffffff;
   border-style: none;
+  font-size: 1vw;
 }
 
 /* Profile CSS */
@@ -356,3 +363,40 @@ body {
   border-radius: 15px;
   color: #ffffff;
 }
+
+.log-reg p a{
+  text-decoration: none;
+}
+
+.reg-form a {
+  text-decoration: none;
+}
+
+.log-reg input, .reg-form input {
+  color: white;
+}
+
+/* lower chatusers profile styles */
+
+.user-prof {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0.2vw;
+
+  margin-right: 0.3vw;
+  align-items: flex-end;
+  background-color: #1c1d1f;
+  width: 100%;
+}
+
+
+.profile-pic-sml {
+  height: 32px;
+  width: 32px;
+}
+
+.user-data {
+  font-size: 0.8vw;
+  line-height: 0.1vh;
+}
+

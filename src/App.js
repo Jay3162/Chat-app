@@ -15,8 +15,8 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<Home socket={socket}/>}></Route>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<Register socket={socket}/>}/>
+          <Route path="/login" element={<Login socket={socket}/>}/>
           <Route path="/chat" element={<MainChat socket={socket}/>}/>
           <Route path="/profile" element={<Profile/>}/>
         </Routes>

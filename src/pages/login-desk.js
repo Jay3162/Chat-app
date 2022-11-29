@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FiArrowRight } from 'react-icons/fi';
 
 export default function DeskLogin({socket}) {
@@ -13,6 +13,11 @@ export default function DeskLogin({socket}) {
         navigate("/chat");
 
     }
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        navigate("/login")
+    }
     return (
         <div className="desk-container">
             <header className="desk-header">
@@ -20,7 +25,7 @@ export default function DeskLogin({socket}) {
                 <span className="desk-span-el">About us</span>
                 <span className="desk-span-el">Blog</span>
                 <span className="desk-span-el">Safety</span>
-                <span className="desk-span-el"><button className="desk-log-btn" href="#">Login</button></span>
+                <span className="desk-span-el"><button className="desk-log-btn" onClick={handleLogin}>Login</button></span>
             </header>
             <div className="desk-form-wrapper">
                 <form className="desk-form" onSubmit={handleSubmit}>
