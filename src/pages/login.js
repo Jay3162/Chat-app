@@ -1,21 +1,26 @@
 import React, {useRef, useEffect} from "react";
 import { Link, useNavigate, redirect } from "react-router-dom";
-import { Signin } from "../firebase";
+import { Signin, useAuth } from "../firebase";
 
-export default function Login() {
+export default function Login({socket}) {
     const username = useRef();
     const email = useRef();
     const password = useRef();
-
+    const currentUser = useAuth();
+    console.log(currentUser)
     const navigate = useNavigate();
-
-    const handleClick = (e) => {
-        return navigate("/chat")
-    }
     const handleLogin = (e) => {
         e.preventDefault();
+
+        
         try {
             Signin(email.current.value, password.current.value)
+            const uid = currentUser.uid;
+            const newUsername = username.current.value;
+            const newEmail = email.current.value;
+            const newPassword = password.current.value;
+            socket.emit("newRegUser", {newUsername, socketID: socket.id, newEmail, newPassword, uid})
+            navigate("/chat")
         } catch(err) {
             console.log(err)
         }
@@ -27,9 +32,11 @@ export default function Login() {
                 <h2>Welcome Back</h2>
                 <label>Username</label>
                 <input className="reg-username" ref={username} required></input>
+                <label>Username</label>
+                <input className="reg-email" ref={email} required></input>
                 <label>Password</label>
                 <input className="reg-password" ref={password} required type="password"></input>
-                <button className="reg-btn" type="button" onClick={handleClick}>Continue</button>
+                <button className="reg-btn" type="submit">Continue</button>
                 <span className="log-reg">
                     <p>Need an account? <Link to="/register">Register</Link></p> 
                 </span>

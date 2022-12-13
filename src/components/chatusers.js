@@ -9,20 +9,15 @@ export default function Chatusers({socket}) {
     const [users, setUsers] = useState([])
     const [loggedUsers, setLoggedUsers] = useState([])
     const [name, setName] = useState("" || currentUser);
-    
-    console.log(currentUser)
     useEffect(() => {
         socket.on("newUserResponse", data => setUsers(data))
     }, [socket, users])
     useEffect(() => {
         socket.on("newRegUserResponse", data => setLoggedUsers(data))
-        console.log(loggedUsers)
     }, [socket, loggedUsers])
     return (
         <div className="users-list">
-            {name ? <p>{name.email}</p> : <div></div>}
             {users.map(user => <div className="user" key={user.socketID}>
-                {console.log(user)}
                 <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
                 <p >{user.username}</p>
             </div>)}
@@ -39,10 +34,23 @@ export default function Chatusers({socket}) {
                     <BsGearFill/>
                 </div>
             </div>)}
-            {loggedUsers.map(logged => <div className="user" key={logged.socketID}>
+            {loggedUsers.map(logged => <div className="user" key={logged.uid}>
                 {console.log(logged)}
                 <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
-                <p>{}</p>
+                <p>{logged.newUsername}</p>
+            </div>)}
+            {loggedUsers.map(logged => <div className="user-prof">
+                <img className="profile-pic-sml" src="images/placeholder-profile-pic.png"/>
+                <div className="user-data">
+                    <p>{logged.newUsername}</p>
+                    
+                    <p>#{logged.socketID.substring(0, 5).toLowerCase()}</p>
+                </div>
+                <div className="lower-icons">
+                    <MdHeadphones/>
+                    <FaMicrophone/>
+                    <BsGearFill/>
+                </div>
             </div>)}
 
         </div>

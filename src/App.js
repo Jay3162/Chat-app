@@ -7,7 +7,6 @@ import Login from './pages/login';
 import Profile from './pages/profile';
 
 const socket = socketIO.connect("http://localhost:4000");
-console.log(socket.on)
 
 function App() {
   return (

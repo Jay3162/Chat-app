@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import Chatbar from './chatbar'
+import { useAuth } from '../firebase';
 
-export default function Body({socket, messages}) {
-    console.log(messages)
+export default function Body({socket, messages, authMessages}) {
     const navigate = useNavigate("/")
+    const currentUser = useAuth();
     const handleLeave = (e) => {
         e.preventDefault();
         localStorage.removeItem("username")
@@ -12,8 +13,8 @@ export default function Body({socket, messages}) {
         window.location.reload();
     }
     return (
-        <div className="body-container">
-            {messages.map(message => (
+        <div className="body-container">            
+            {/* {messages.map(message => (
                 message.name === localStorage.getItem("username") ? (
                 <div className="user-msg" key={message.id}>
                     <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
@@ -29,7 +30,18 @@ export default function Body({socket, messages}) {
                     <p>{message.text}</p>
                 </div>
             </div>)
-            ))}
+            ))} */}
+            {authMessages.map(msg => { return (
+                    <div className="user-mag" key={msg.id}>
+                        <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
+                        <div className="user-inner">
+                            <p>You</p>
+                            <p>{msg.text}</p>
+                            <p>{console.log(msg)}</p>
+                        </div>
+                    </div>
+                ) 
+            })}
             <Chatbar socket={socket}/>
         </div>
     )

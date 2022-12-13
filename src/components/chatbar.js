@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import { useAuth } from '../firebase';
 
 export default function Chatbar({socket}) {
     const [message, setMessage] = useState("")
+    const currentUser = useAuth();
     const handleSubmit = (e) => {
         e.preventDefault();
         if (message.trim() && localStorage.getItem("username")) {
@@ -13,6 +15,18 @@ export default function Chatbar({socket}) {
             }
             )
 
+        }
+        console.log(currentUser)
+        if (message.trim() && currentUser) {
+            socket.emit("authmessage", {
+                text: message,
+                name: currentUser.newUsername,
+                email: currentUser.newEmail,
+                password: currentUser.newPassword,
+                id: `${socket.id}${Math.random()}`,
+                socketID: socket.id,
+                uid: currentUser.uid
+            })
         }
         setMessage("");
     }
