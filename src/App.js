@@ -17,7 +17,7 @@ function App() {
           <Route path="/register" element={<Register socket={socket}/>}/>
           <Route path="/login" element={<Login socket={socket}/>}/>
           <Route path="/chat" element={<MainChat socket={socket}/>}/>
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profile" element={<Profile socket={socket}/>}/>
         </Routes>
       </div>
     </BrowserRouter>

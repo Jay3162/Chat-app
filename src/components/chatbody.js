@@ -12,9 +12,10 @@ export default function Body({socket, messages, authMessages}) {
         navigate("/")
         window.location.reload();
     }
+
     return (
         <div className="body-container">            
-            {/* {messages.map(message => (
+            {messages.map(message => (
                 message.name === localStorage.getItem("username") ? (
                 <div className="user-msg" key={message.id}>
                     <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
@@ -30,17 +31,16 @@ export default function Body({socket, messages, authMessages}) {
                     <p>{message.text}</p>
                 </div>
             </div>)
-            ))} */}
+            ))}
             {authMessages.map(msg => { return (
-                    <div className="user-mag" key={msg.id}>
+                    <div className="user-msg" key={msg.id}>
                         <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
                         <div className="user-inner">
                             <p>You</p>
                             <p>{msg.text}</p>
-                            <p>{console.log(msg)}</p>
                         </div>
                     </div>
-                ) 
+                )
             })}
             <Chatbar socket={socket}/>
         </div>

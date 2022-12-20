@@ -1,17 +1,62 @@
 import React from 'react';
+import { Logout } from '../firebase';
+import { useAuth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
-export default function Profile() {
+export default function Profile({socket}) {
+    const currentUser = useAuth();
+    const navigate = useNavigate();
+    const Signout = () => {
+        try {
+            if (currentUser) {
+                socket.emit("logout", data => {
+                    console.log(data)
+                })
+                Logout(currentUser.email, currentUser.password)
+                navigate("/")
+            }   
+        } catch(e) {
+            console.log(e)
+        }
+    }
+
     return (
         <div className="prof-container">
             <div className="prof-settings">
                 <h2>User Settings</h2>
                 <ul>
-                    <li>Account</li>
-                    <li>Account</li>
-                    <li>Account</li>
-                    <li>Account</li>
-                    <li>Account</li>
+                    <li>My Account</li>
+                    <li>Privacy & Safety</li>
+                    <li>Authorized Apps</li>
+                    <li>Connections</li>
                 </ul>
+                <h2>Billing Settings</h2>
+                <ul>
+                    <li>Nitro</li>
+                    <li>Server Boost</li>
+                    <li>Subscriptions</li>
+                    <li>Gift Inventory</li>
+                    <li>Biling</li>
+                </ul>
+                <h2>App Settings</h2>
+                <ul>
+                    <li>Appearance</li>
+                    <li>Accessiblity</li>
+                    <li>Voice & Video</li>
+                    <li>Text & images</li>
+                    <li>Notifications</li>
+                    <li>Keybinds</li>
+                    <li>Language</li>
+                </ul>
+                <ul>
+                    <li>Change Log</li>
+                    <li><a href="#">Log Out</a></li>
+                </ul>
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
             <div className="prof-main">
                 <h2>My Account</h2>

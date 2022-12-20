@@ -15,9 +15,7 @@ export default function Chatbar({socket}) {
             }
             )
 
-        }
-        console.log(currentUser)
-        if (message.trim() && currentUser) {
+        } else if (message.trim() && currentUser) {
             socket.emit("authmessage", {
                 text: message,
                 name: currentUser.newUsername,

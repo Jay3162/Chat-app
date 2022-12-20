@@ -1,5 +1,5 @@
-import React, {useRef, useEffect} from "react";
-import { Link, useNavigate, redirect } from "react-router-dom";
+import React, {useRef} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Signin, useAuth } from "../firebase";
 
 export default function Login({socket}) {
@@ -7,23 +7,23 @@ export default function Login({socket}) {
     const email = useRef();
     const password = useRef();
     const currentUser = useAuth();
-    console.log(currentUser)
     const navigate = useNavigate();
     const handleLogin = (e) => {
         e.preventDefault();
-
-        
-        try {
-            Signin(email.current.value, password.current.value)
-            const uid = currentUser.uid;
-            const newUsername = username.current.value;
-            const newEmail = email.current.value;
-            const newPassword = password.current.value;
-            socket.emit("newRegUser", {newUsername, socketID: socket.id, newEmail, newPassword, uid})
-            navigate("/chat")
-        } catch(err) {
-            console.log(err)
-        }
+            try {
+                Signin(email.current.value, password.current.value)
+                const uid = currentUser.uid;
+                const newUsername = username.current.value;
+                const newEmail = email.current.value;
+                const newPassword = password.current.value;
+                const socketID = socket.id
+                console.log(uid, newUsername, newEmail, newPassword)
+                socket.emit("newRegUser", [newUsername, socketID, newEmail, newPassword, uid])
+                console.log(currentUser)
+                navigate("/chat")
+            } catch(err) {
+                console.log(err)
+            }
     }
 
     return (
@@ -32,7 +32,7 @@ export default function Login({socket}) {
                 <h2>Welcome Back</h2>
                 <label>Username</label>
                 <input className="reg-username" ref={username} required></input>
-                <label>Username</label>
+                <label>Email</label>
                 <input className="reg-email" ref={email} required></input>
                 <label>Password</label>
                 <input className="reg-password" ref={password} required type="password"></input>
