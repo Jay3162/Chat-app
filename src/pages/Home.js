@@ -1,11 +1,12 @@
 import React from 'react';
-import DeskLogin from './login-desk';
+import Login from './login';
+
 
 const Home = ({socket}) => {
     return (
         <div className="container">
             {/* <header>Header</header> */}
-            <DeskLogin socket={socket}/>
+            <Login socket={socket}/>
         </div>
     )
 }

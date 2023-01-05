@@ -65,7 +65,12 @@ export default function Profile({socket}) {
                 <div className="prof-banner"></div>
                 <div className="prof-inner">
                     <div className="prof-inner-left">
-                        <div className="img-container"></div>
+                        <div className='img-wrapper'>
+                            <div className="img-container"></div>
+                            <div className="status-wrapper">
+                                <div className="status-color"></div>
+                            </div>
+                        </div>
                         <h2>BestBuddy</h2>
                         <p>...</p>
                     </div>

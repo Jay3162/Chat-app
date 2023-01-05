@@ -15,7 +15,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home socket={socket}/>}></Route>
           <Route path="/register" element={<Register socket={socket}/>}/>
-          <Route path="/login" element={<Login socket={socket}/>}/>
           <Route path="/chat" element={<MainChat socket={socket}/>}/>
           <Route path="/profile" element={<Profile socket={socket}/>}/>
         </Routes>
