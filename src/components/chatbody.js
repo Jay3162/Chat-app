@@ -17,7 +17,7 @@ export default function Body({socket, messages, authMessages}) {
     console.log(currentUser)
 
     return (
-        <div className="body-container">
+        <div className="body-container" data-testid="chatbody">
             {authMessages ? authMessages.map(msg => {
                 return (            
                 <div className="user-msg">

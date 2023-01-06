@@ -12,7 +12,7 @@ body {
 
 .chat-container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr;
+  grid-template-columns: 3fr 1fr 2fr;
   height: 100vh;
 }
 
@@ -72,6 +72,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 0.5vw;
+  height: inherit;
 }
 
 .user-inner {
@@ -92,17 +93,28 @@ body {
   color: #ccc;
 }
 
+.inputbar:focus {
+  border-style: none;
+  outline: none;
+  box-shadow: none;
+}
+
 .sendbtn {
   border-radius: 0px 15px 15px 0px;
   border-style: none;
   background-color: rgb(165, 163, 163);
   color: #ccc;
+  display: flex;
+  align-items: center;
+  padding-right: 1vw;
 }
 
 .innerbtn {
   background-color: rgb(165, 163, 163);
   border-style: none;
   color: #ccc;
+  display: flex;
+  align-items: center;
 }
 
 .startbtn {
@@ -110,10 +122,9 @@ body {
   background-color: rgb(165, 163, 163);
   border-style: none;
   color: #ccc;
-}
-
-.inputbar:focus {
-  border: 2px solid rgb(114, 114, 114);
+  display: flex;
+  align-items: center;
+  padding-left: 1vw;
 }
 
 .channel-container{
@@ -443,17 +454,12 @@ body {
   align-items: flex-end;
   background-color: #1c1d1f;
   width: 100%;
-  
-}
-
-.lower-icons {
-  padding-right: 0.5vw;
+  height: 6.6vh;
 }
 
 .lower-icons button {
   color: 	#99aab5;
 }
-
 
 .profile-pic-sml {
   height: 32px;
@@ -463,8 +469,8 @@ body {
 
 .user-data {
   font-size: 0.8vw;
-  line-height: 0.1vh;
   padding-left: 0.5vw;
+  height: inherit;
 }
 
 .user-title {
@@ -473,14 +479,25 @@ body {
   font-size: 1vw;
 }
 
+.user-hash{ 
+  display: none;
+}
+
 .profile-cog {
   background: none;
   border-style: none;
   color: 	#99aab5;
+  font-size: 0.9vw;
 }
 
 .profile-cog:focus {
   cursor: pointer;
+}
+
+.lower-icons {
+  display: flex;
+  align-items: center;
+  height: inherit;
 }
 
 /* logged user chat messages */

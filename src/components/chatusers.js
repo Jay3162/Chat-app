@@ -40,7 +40,7 @@ export default function Chatusers({socket}) {
                         <img className="profile-pic-sml" src="images/placeholder-profile-pic.png"/>
                         <div className="user-data">
                             <p className="user-title">{logged[0]}</p>
-                            <p>#{logged[1].substring(0, 5).toLowerCase()}</p>
+                            <p className="user-hash">#{logged[1].substring(0, 5).toLowerCase()}</p>
                         </div>
                     </div>)}
 
