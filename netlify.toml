@@ -1,0 +1,8 @@
+[build]
+    CI = "npm run build"
+    command = "npm run build"
+
+[[redirects]]
+    to = "/"
+    from = "/"
+    status = 200
