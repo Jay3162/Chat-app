@@ -27,8 +27,8 @@ export function Signin(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
 }
 
-export function Logout(email, password) {
-    return signOut(email, password)
+export function Logout() {
+    return signOut(auth)
 }
 
 export function useAuth() {

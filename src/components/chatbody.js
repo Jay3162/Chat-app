@@ -4,14 +4,8 @@ import Chatbar from './chatbar'
 import { useAuth } from '../firebase';
 
 export default function Body({socket, messages, authMessages}) {
-    const navigate = useNavigate("/")
+    const navigate = useNavigate("/");
     const currentUser = useAuth();
-    const handleLeave = (e) => {
-        e.preventDefault();
-        localStorage.removeItem("username")
-        navigate("/")
-        window.location.reload();
-    }
 
     console.log(socket)
     console.log(currentUser)

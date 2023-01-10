@@ -19,7 +19,7 @@ export default function MainChat ({socket}) {
             <div>
                 <Body socket={socket} messages={messages} authMessages={authMessages}/>
             </div>
-            <div className="channel-container"></div>
+            {/* <div className="channel-container"></div> */}
         </div>
     )
 }

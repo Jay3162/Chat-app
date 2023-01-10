@@ -26,7 +26,7 @@ export default function Chatbar({socket}) {
     return (
         <form onSubmit={handleSubmit} className="chatbar">
             <button className="startbtn"><BsFillPlusCircleFill/></button>
-            <input className="inputbar" data-testId="chatbar" onChange={(e) => setMessage(e.target.value)} value={message} placeholder="Message away..."></input>
+            <input className="inputbar" data-testid="chatbar" onChange={(e) => setMessage(e.target.value)} value={message} placeholder="Message away..."></input>
             <button className="innerbtn"><BsGiftFill/></button>
             <button className="innerbtn"><AiOutlineGif/></button>
             <button className="sendbtn"><FaSmileWink/></button>

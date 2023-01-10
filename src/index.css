@@ -5,14 +5,9 @@ body {
   font-family: sans-serif;
 }
 
-.desk-main {
-
-}
-
-
 .chat-container {
   display: grid;
-  grid-template-columns: 3fr 1fr 2fr;
+  grid-template-columns: 2fr 3fr;
   height: 100vh;
 }
 
@@ -498,6 +493,36 @@ body {
   display: flex;
   align-items: center;
   height: inherit;
+}
+
+/* leave chat btn */
+
+.leave-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.leave-btn {
+  padding: 1vw;
+  border-radius: 15px;
+  border-style: none;
+  font-weight: 700;
+  background-color: #ED4245;
+  color: #ccc;
+  margin-top: 5vh;
+}
+
+.leave-btn:hover {
+  cursor: pointer;
+}
+
+.user-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-inner-wrapper {
+  display: flex;
 }
 
 /* logged user chat messages */
