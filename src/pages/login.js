@@ -28,7 +28,7 @@ export default function Login({socket}) {
 
     return (
         <div className="log-container">
-            <form className="reg-form" onSubmit={handleLogin}>
+            <form className="reg-form" onSubmit={handleLogin} data-testid="login">
                 <h2>Welcome Back</h2>
                 <label>Username</label>
                 <input className="reg-username" ref={username} required></input>

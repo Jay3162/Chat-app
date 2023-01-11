@@ -24,7 +24,7 @@ export default function Chatusers({socket}) {
 
     useEffect(() => {
         // retrieve the most recent messages 
-        socket.on("newUserResponse", data => setUsers(data))
+        socket.on("newUserResponse", data => setUsers(data));
         console.log(users)
     }, [socket, users])
     useEffect(() => {
@@ -44,10 +44,10 @@ export default function Chatusers({socket}) {
                     <div className="user-wrapper">
                         <div className="user-inner-wrapper">
                             <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
-                            {check ? <p>{loggedUsers[loggedUsers.length-1][0]}</p> : <p><ClipLoader color={"#ccc"} size={"2vw"}/></p>}
+                            {check ? <p data-testid="user">{loggedUsers[loggedUsers.length-1][0]}</p> : <p><ClipLoader color={"#ccc"} size={"2vw"}/></p>}
                         </div>
                     <div className="leave-wrapper">
-                    <button className="leave-btn" onClick={handleLeave}>Leave Chat</button>
+                        <button className="leave-btn" onClick={handleLeave} data-testid="leave-btn">Leave Chat</button>
                     </div>
                 </div>
                 </div>
