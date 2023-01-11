@@ -19,7 +19,6 @@ export default function Login({socket}) {
                 const socketID = socket.id
                 console.log(uid, newUsername, newEmail, newPassword)
                 socket.emit("newRegUser", [newUsername, socketID, newEmail, newPassword, uid])
-                console.log(currentUser)
                 navigate("/chat")
             } catch(err) {
                 console.log(err)

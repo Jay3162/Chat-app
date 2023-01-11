@@ -1,15 +1,11 @@
-import React, {useRef, useState} from "react";
-import { Link, useNavigate, redirect } from "react-router-dom";
+import React, {useRef} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Signup } from "../firebase";
 
 export default function Register({socket}) {
     const email = useRef();
     const password = useRef();
-    const [req, setReq] = useState(false);
     const navigate = useNavigate();
-    // const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
-
 
     const handleSubmit = async (e) => {
         try {
@@ -27,15 +23,14 @@ export default function Register({socket}) {
                 <h2>Create an account</h2>
                 <label>Email</label>
                 <input className="reg-email"
-                // value={email}
                 ref={email}
                 required
                 ></input>
                 <label>Password</label>
                 <input className="reg-password"
-                // value={password}
                 ref={password}
                 required
+                type="password"
                 ></input>
                 <button className="reg-btn">Continue</button>
                 <Link to="/login">Already have an account?</Link>

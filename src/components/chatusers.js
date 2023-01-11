@@ -52,14 +52,6 @@ export default function Chatusers({socket}) {
                 </div>
                 </div>
                 <div className="user-prof">
-                    {/* {loggedUsers.map(logged => <div className="user" key={logged[1]}>
-                        <img className="profile-pic-sml" src="images/placeholder-profile-pic.png"/>
-                        <div className="user-data">
-                            <p className="user-title">{logged[0]}</p>
-                            <p className="user-hash">#{logged[1].substring(0, 5).toLowerCase()}</p>
-                        </div>
-                    </div>)} */}
-                    
                     {<div className="user">
                         <img className="profile-pic-sml" src="images/placeholder-profile-pic.png"/>
                         <div className="user-data">
