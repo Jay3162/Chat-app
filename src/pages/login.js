@@ -18,7 +18,9 @@ export default function Login({socket}) {
                 const newPassword = password.current.value;
                 const socketID = socket.id
                 console.log(uid, newUsername, newEmail, newPassword)
-                socket.emit("newRegUser", [newUsername, socketID, newEmail, newPassword, uid])
+                // socket.emit("newRegUser", [newUsername, socketID, newEmail, newPassword, uid])
+                const data = {"newUsername" : newUsername, "socketID" : socketID, "newEmail" : newEmail, "newPassword" : newPassword, "uid" : uid}
+                socket.emit("newRegUser", data)
                 navigate("/chat")
             } catch(err) {
                 console.log(err)
@@ -30,12 +32,12 @@ export default function Login({socket}) {
             <form className="reg-form" onSubmit={handleLogin} data-testid="login">
                 <h2>Welcome Back</h2>
                 <label>Username</label>
-                <input className="reg-username" ref={username} required></input>
+                <input className="reg-username" ref={username} required data-testid="login-name"></input>
                 <label>Email</label>
-                <input className="reg-email" ref={email} required></input>
+                <input className="reg-email" ref={email} required data-testid="login-email"></input>
                 <label>Password</label>
-                <input className="reg-password" ref={password} required type="password"></input>
-                <button className="reg-btn" type="submit">Continue</button>
+                <input className="reg-password" ref={password} required type="password" data-testid="login-password"></input>
+                <button className="reg-btn" type="submit" data-testid="sub-btn">Continue</button>
                 <span className="log-reg">
                     <p>Need an account? <Link to="/register">Register</Link></p> 
                 </span>

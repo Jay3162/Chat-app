@@ -7,7 +7,6 @@ import { Logout } from '../firebase';
 import { useNavigate } from 'react-router';
 import ClipLoader from "react-spinners/ClipLoader";
 
-
 export default function Chatusers({socket}) {
     const currentUser = useAuth();
     const [users, setUsers] = useState([])
@@ -30,22 +29,26 @@ export default function Chatusers({socket}) {
     useEffect(() => {
         socket.on("newRegUserResponse", data => setLoggedUsers(data));
         if (loggedUsers.length > 0) {
-            setCheck(!check);
+            setCheck(true);
         }
-        
-        console.log(loggedUsers[loggedUsers.length-1]);
-        console.log(loggedUsers);
-    }, [socket, loggedUsers])
+
+    }, [socket, loggedUsers, setCheck])
     
     return (
         <div className="users-list">
                 <div className="user">
                     {/* render username of current user */}
                     <div className="user-wrapper">
-                        <div className="user-inner-wrapper">
-                            <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
-                            {check ? <p data-testid="user">{loggedUsers[loggedUsers.length-1][0]}</p> : <p><ClipLoader color={"#ccc"} size={"2vw"}/></p>}
-                        </div>
+                        {check ? <div>{loggedUsers.map((users, i) => {
+                            return (
+                            <div className="user-inner-wrapper" key={i}>
+                                <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
+                                <p data-testid="user">{users.newUsername}</p>
+                            </div>)
+                        })}
+                        </div> : 
+                        <p><ClipLoader color={"#ccc"} size={"2vw"}/></p>}
+                        
                     <div className="leave-wrapper">
                         <button className="leave-btn" onClick={handleLeave} data-testid="leave-btn">Leave Chat</button>
                     </div>
@@ -53,11 +56,24 @@ export default function Chatusers({socket}) {
                 </div>
                 <div className="user-prof">
                     {<div className="user">
-                        <img className="profile-pic-sml" src="images/placeholder-profile-pic.png"/>
-                        <div className="user-data">
-                        {check ? <p className="user-title">{loggedUsers[loggedUsers.length-1][0]}</p> : <p><ClipLoader color={"#ccc"} size={"1,vw"}/></p>}
+                        {/* <img className="profile-pic-sml" src="images/placeholder-profile-pic.png"/>
+                        <div className="user-data"> */}
+                        {/* {check ? <p className="user-title">{loggedUsers[loggedUsers.length-1].newUsername}</p> : <p><ClipLoader color={"#ccc"} size={"1,vw"}/></p>} */}
                             {/* .substring(0, 5).toLowerCase() */}
-                        </div>
+                        {/* </div> */}
+                        {check ? <div className="user">
+                            {loggedUsers.map((user, i) => {
+                                return (
+                                <div>
+                                    {currentUser.email === user.newEmail ? 
+                                    <div className="user-data" key={i}>
+                                        <img className="profile-pic-sml" src="images/placeholder-profile-pic.png" alt="profile-pic"/>
+                                        <p className="user-title">{user.newUsername}</p>
+                                    </div> : <div></div>}
+                                </div>)
+
+                            })}
+                        </div> : <div></div>}
                     </div>}
 
                     <div className="lower-icons">

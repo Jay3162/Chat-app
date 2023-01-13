@@ -14,7 +14,7 @@ export default function MainChat ({socket}) {
         socket.on("authResponse", data => setAuthMessages([...authMessages, data]))
     })
     return (
-        <div className="chat-container">
+        <div className="chat-container" data-testid="main-chat">
             <Chatusers socket={socket}/>
             <div>
                 <Body socket={socket} messages={messages} authMessages={authMessages}/>

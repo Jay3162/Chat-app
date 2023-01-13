@@ -6,29 +6,46 @@ import { useAuth } from '../firebase';
 export default function Body({socket, messages, authMessages}) {
     const navigate = useNavigate("/");
     const currentUser = useAuth();
+    const [check, setCheck] = useState(false);
+    
+    const [loggedUsers, setLoggedUsers] = useState([]);
+    useEffect(() => {
+        socket.on("newRegUserResponse", data => setLoggedUsers(data));
+        if (loggedUsers.length > 0) {
+            setCheck(true);
+        }
+
+    }, [socket, loggedUsers])
+
 
     console.log(socket)
     console.log(currentUser)
 
     return (
         <div className="body-container" data-testid="chatbody">
-            {authMessages ? authMessages.map(msg => {
-                return (            
-                <div className="user-msg">
-                    <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
-                    <div className="user-inner">
-                        <p>You</p>
-                        <p className="user-txt">{msg.text}</p>
-                    </div>  
-                </div>)
-            }) : authMessages.map(msg => {
-                <div className="user-msg">
-                    <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
-                    <div className="user-inner">
-                        {msg.uid === currentUser.uid ? <p>{currentUser.email}</p> : <p>placeholder</p>}
-                        <p className="user-txt">{msg.text}</p>
-                    </div>  
-                </div>})}      
+                {check ? authMessages.map(msg => {
+                    return (
+                        <div>
+                            {loggedUsers.map((user, i) => {
+                                return(
+                                <div className="user-msg" key={i}>
+                                    <div>
+                                        {console.log(loggedUsers)}
+                                        {console.log(currentUser)}
+                                        {user.newEmail === currentUser.email ? 
+                                        <div className="user-upper">
+                                            <img className="profile-pic" src="images/placeholder-profile-pic.png" alt="profile-pic"/>
+                                            <div className="user-inner">
+                                                <p>{user.newUsername}</p>
+                                                <p className="user-txt">{msg.text}</p>
+                                            </div>
+                                        </div> : <div></div>}
+                                    </div>
+                                </div>)
+                            })}
+                        </div>
+                    )
+                }) : <div></div>}     
             <Chatbar socket={socket}/>
         </div>
     )

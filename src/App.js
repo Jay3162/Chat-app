@@ -6,7 +6,8 @@ import Register from './pages/signup';
 import Login from './pages/login';
 import Profile from './pages/profile';
 
-const socket = socketIO.connect("https://chat-app-server.adaptable.app/");
+// const socket = socketIO.connect("https://chat-app-server.adaptable.app/");
+const socket = socketIO.connect("http://localhost:4000");
 
 function App() {
   return (
