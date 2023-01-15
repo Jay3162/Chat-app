@@ -56,17 +56,16 @@ export default function Chatusers({socket}) {
                 </div>
                 <div className="user-prof">
                     {<div className="user">
-                        {/* <img className="profile-pic-sml" src="images/placeholder-profile-pic.png"/>
-                        <div className="user-data"> */}
-                        {/* {check ? <p className="user-title">{loggedUsers[loggedUsers.length-1].newUsername}</p> : <p><ClipLoader color={"#ccc"} size={"1,vw"}/></p>} */}
-                            {/* .substring(0, 5).toLowerCase() */}
-                        {/* </div> */}
                         {check ? <div className="user">
+                            {console.log(loggedUsers)}
                             {loggedUsers.map((user, i) => {
                                 return (
                                 <div>
-                                    {currentUser.email === user.newEmail ? 
+                                    {currentUser.uid === user.uid ? 
                                     <div className="user-data" key={i}>
+                                        {console.log(currentUser)}
+                                        {console.log(user)}
+                                        {console.log(loggedUsers)}
                                         <img className="profile-pic-sml" src="images/placeholder-profile-pic.png" alt="profile-pic"/>
                                         <p className="user-title">{user.newUsername}</p>
                                     </div> : <div></div>}

@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth';
 import {useEffect, useState} from 'react';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,7 +29,7 @@ export function Signin(email, password) {
 }
 
 export function Logout() {
-    return signOut(auth)
+    return signOut(auth);
 }
 
 export function useAuth() {

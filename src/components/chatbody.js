@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
 import Chatbar from './chatbar'
-import { useAuth } from '../firebase';
+// import { useAuth } from '../firebase';
 
-export default function Body({socket, messages, authMessages}) {
-    const navigate = useNavigate("/");
-    const currentUser = useAuth();
+export default function Body({socket, authMessages}) {
+    // const currentUser = useAuth();
     const [check, setCheck] = useState(false);
     
     const [loggedUsers, setLoggedUsers] = useState([]);
@@ -14,15 +12,11 @@ export default function Body({socket, messages, authMessages}) {
         if (loggedUsers.length > 0) {
             setCheck(true);
         }
-
     }, [socket, loggedUsers])
-
-
-    console.log(socket)
-    console.log(currentUser)
 
     return (
         <div className="body-container" data-testid="chatbody">
+            {/* wait for messages */}
                 {check ? authMessages.map(msg => {
                     return (
                         <div>
@@ -30,9 +24,8 @@ export default function Body({socket, messages, authMessages}) {
                                 return(
                                 <div className="user-msg" key={i}>
                                     <div>
-                                        {console.log(loggedUsers)}
-                                        {console.log(currentUser)}
-                                        {user.newEmail === currentUser.email ? 
+                                        {/* check user ID against message ID and render correct username above message */}
+                                        {user.socketID === msg.socketID ? 
                                         <div className="user-upper">
                                             <img className="profile-pic" src="images/placeholder-profile-pic.png" alt="profile-pic"/>
                                             <div className="user-inner">
