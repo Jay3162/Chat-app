@@ -24,7 +24,6 @@ export default function Chatusers({socket}) {
     useEffect(() => {
         // retrieve the most recent messages 
         socket.on("newUserResponse", data => setUsers(data));
-        console.log(users)
     }, [socket, users])
     useEffect(() => {
         socket.on("newRegUserResponse", data => setLoggedUsers(data));
@@ -42,7 +41,7 @@ export default function Chatusers({socket}) {
                         {check ? <div>{loggedUsers.map((users, i) => {
                             return (
                             <div className="user-inner-wrapper" key={i}>
-                                <img className="profile-pic" src="images/placeholder-profile-pic.png"/>
+                                <img className="profile-pic" src="images/placeholder-profile-pic.png" alt="profile-pic"/>
                                 <p data-testid="user">{users.newUsername}</p>
                             </div>)
                         })}
