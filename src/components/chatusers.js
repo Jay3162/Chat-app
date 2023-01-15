@@ -57,15 +57,11 @@ export default function Chatusers({socket}) {
                 <div className="user-prof">
                     {<div className="user">
                         {check ? <div className="user">
-                            {console.log(loggedUsers)}
                             {loggedUsers.map((user, i) => {
                                 return (
                                 <div>
                                     {currentUser.uid === user.uid ? 
                                     <div className="user-data" key={i}>
-                                        {console.log(currentUser)}
-                                        {console.log(user)}
-                                        {console.log(loggedUsers)}
                                         <img className="profile-pic-sml" src="images/placeholder-profile-pic.png" alt="profile-pic"/>
                                         <p className="user-title">{user.newUsername}</p>
                                     </div> : <div></div>}
