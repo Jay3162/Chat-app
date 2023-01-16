@@ -21,7 +21,27 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export function Signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password)
+    let newUser;
+    try {
+    newUser = createUserWithEmailAndPassword(auth, email, password);
+    return newUser;
+    } catch(error) {
+        switch (error.code) {
+            case "auth/email-already-in-use": 
+                console.log(`Email ${email} already in use`);
+                break;
+            case 'auth/invalid-email':
+                console.log(`Email address ${email} is invalid.`);
+                break;
+            case 'auth/operation-not-allowed':
+            console.log(`Error during sign up.`);
+                break;
+            default:
+            console.log(error.message);
+            break;
+        }
+    }
+    
 }
 
 export function Signin(email, password) {

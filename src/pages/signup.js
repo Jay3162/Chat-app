@@ -19,6 +19,7 @@ export default function Register({socket}) {
 
     return (
         <div className="reg-container">
+
             <form className="reg-form" onSubmit={handleSubmit}>
                 <h2>Create an account</h2>
                 <label>Email</label>

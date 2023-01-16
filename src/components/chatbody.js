@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import Chatbar from './chatbar'
-// import { useAuth } from '../firebase';
+import { useAuth } from '../firebase';
 
 export default function Body({socket, authMessages}) {
-    // const currentUser = useAuth();
+    const currentUser = useAuth();
     const [check, setCheck] = useState(false);
     
     const [loggedUsers, setLoggedUsers] = useState([]);
@@ -17,9 +17,9 @@ export default function Body({socket, authMessages}) {
     return (
         <div className="body-container" data-testid="chatbody">
             {/* wait for messages */}
-                {check ? authMessages.map(msg => {
+                {check ? authMessages.map((msg, i) => {
                     return (
-                        <div>
+                        <div key={i}>
                             {loggedUsers.map((user, i) => {
                                 return(
                                 <div className="user-msg" key={i}>

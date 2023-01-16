@@ -8,19 +8,28 @@ export default function Login({socket}) {
     const password = useRef();
     const currentUser = useAuth();
     const navigate = useNavigate();
+    let nameList = [];
+
+    socket.on("user already exists", () => {
+        console.log("User Taken! Please use another username");
+    })
+
     const handleLogin = (e) => {
         e.preventDefault();
             try {
+                if (nameList.includes(username.current.value)) {
+                    return;
+                }
                 Signin(email.current.value, password.current.value)
                 const uid = currentUser.uid;
                 const newUsername = username.current.value;
                 const newEmail = email.current.value;
                 const newPassword = password.current.value;
                 const socketID = socket.id
-                console.log(uid, newUsername, newEmail, newPassword)
-                // socket.emit("newRegUser", [newUsername, socketID, newEmail, newPassword, uid])
                 const data = {"newUsername" : newUsername, "socketID" : socketID, "newEmail" : newEmail, "newPassword" : newPassword, "uid" : uid}
+                console.log(data)
                 socket.emit("newRegUser", data)
+                nameList.push(newUsername);
                 navigate("/chat")
             } catch(err) {
                 console.log(err)
