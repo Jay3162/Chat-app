@@ -3,7 +3,7 @@ import Chatbar from './chatbar'
 import { useAuth } from '../firebase';
 
 export default function Body({socket, authMessages}) {
-    const currentUser = useAuth();
+    // const currentUser = useAuth();
     const [check, setCheck] = useState(false);
     
     const [loggedUsers, setLoggedUsers] = useState([]);

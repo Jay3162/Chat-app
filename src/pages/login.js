@@ -6,7 +6,7 @@ export default function Login({socket}) {
     const username = useRef();
     const email = useRef();
     const password = useRef();
-    const currentUser = useAuth();
+    // const currentUser = useAuth();
     const navigate = useNavigate();
     let nameList = [];
 
@@ -20,14 +20,16 @@ export default function Login({socket}) {
                 if (nameList.includes(username.current.value)) {
                     return;
                 }
-                Signin(email.current.value, password.current.value)
-                const uid = currentUser.uid;
+                // Signin(email.current.value, password.current.value)
+                // const uid = currentUser.uid;
+
                 const newUsername = username.current.value;
                 const newEmail = email.current.value;
                 const newPassword = password.current.value;
                 const socketID = socket.id
-                const data = {"newUsername" : newUsername, "socketID" : socketID, "newEmail" : newEmail, "newPassword" : newPassword, "uid" : uid}
-                console.log(data)
+                // const data = {"newUsername" : newUsername, "socketID" : socketID, "newEmail" : newEmail, "newPassword" : newPassword, "uid" : uid}
+                const data = {"newUsername" : newUsername, "socketID" : socketID, "newEmail" : newEmail, "newPassword" : newPassword}
+                localStorage.setItem("user", data);
                 socket.emit("newRegUser", data)
                 nameList.push(newUsername);
                 navigate("/chat")

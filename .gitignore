@@ -28,3 +28,6 @@ yarn-error.log*
 .firebase.js
 
 __test__
+
+.package.json
+.package-lock.json

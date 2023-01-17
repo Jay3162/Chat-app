@@ -10,17 +10,29 @@ export default function Chatbar({socket}) {
     const currentUser = useAuth();
     const handleSubmit = (e) => {
         e.preventDefault();
-         if (message.trim() && currentUser) {
+        //  if (message.trim() && currentUser) {
+        //     socket.emit("authmessage", {
+        //         text: message,
+        //         name: currentUser.newUsername || localStorage.getItem("username"),
+        //         email: currentUser.newEmail,
+        //         password: currentUser.newPassword,
+        //         id: `${socket.id}${Math.random()}`,
+        //         socketID: socket.id,
+        //         uid: currentUser.uid
+        //     })
+        // }
+        if (message.trim() && localStorage.getItem("user")) {
             socket.emit("authmessage", {
                 text: message,
-                name: currentUser.newUsername || localStorage.getItem("username"),
-                email: currentUser.newEmail,
-                password: currentUser.newPassword,
+                name: localStorage.getItem("username"),
+                email: localStorage.getItem("email"),
+                password: localStorage.getItem("password"),
                 id: `${socket.id}${Math.random()}`,
                 socketID: socket.id,
-                uid: currentUser.uid
+
             })
         }
+        
         setMessage("");
     }
     return (

@@ -8,18 +8,19 @@ import { useNavigate } from 'react-router';
 import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Chatusers({socket}) {
-    const currentUser = useAuth();
+    // const currentUser = useAuth();
     const [users, setUsers] = useState([])
     const [loggedUsers, setLoggedUsers] = useState([])
     const [check, setCheck] = useState(false);
-    const [account, setAccount] = useState(null);
+    // const [account, setAccount] = useState([]);
+    // const [count, setCount] = useState(null)
 
     const navigate = useNavigate();
 
     const handleLeave = (event) => {
         event.preventDefault();
-        console.log("new", loggedUsers)
-        Logout();
+        // Logout();
+        localStorage.removeItem("user");
         navigate("/");
     }
 
@@ -35,22 +36,25 @@ export default function Chatusers({socket}) {
 
     }, [socket, loggedUsers, setCheck])
 
-    useEffect(() => {
-        for (let i = 0; i < loggedUsers.length; i++) {
-            if (currentUser.uid === loggedUsers[i].uid) {
-                setAccount(loggedUsers[i].newUsername);
-            }
-        }
+    // useEffect(() => {
+    //     for (let i = 0; i < loggedUsers.length; i++) {
+    //         if (currentUser.uid === loggedUsers[i].uid) {
+    //             setCount(i);
+    //             // setAccount(loggedUsers[i].newUsername);
+    //             setAccount(prev => [...prev, loggedUsers[count]]);
+    //             console.log(account)
+    //         }
+    //     }
         
-    }, [loggedUsers])
+    // }, [loggedUsers, count])
 
-    useEffect(() => {
-        window.addEventListener('beforeunload', () => {
-            if (currentUser) {
-                socket.emit('remove user', currentUser)
-            }
-        })
-    }, [currentUser])
+    // useEffect(() => {
+    //     window.addEventListener('beforeunload', () => {
+    //         if (currentUser) {
+    //             socket.emit('remove user', currentUser)
+    //         }
+    //     })
+    // }, [currentUser])
     
     return (
         <div className="users-list">
@@ -77,7 +81,7 @@ export default function Chatusers({socket}) {
                         {check ? <div className="user">
                             <div className="user-data">
                                 <img className="profile-pic-sml" src="images/placeholder-profile-pic.png" alt="profile-pic"/>
-                                <p className="user-title">{account}</p>
+                                <p className="user-title">{loggedUsers[0].newUsername}</p>
                             </div>
                         </div> : <div></div>}
                     </div>}
