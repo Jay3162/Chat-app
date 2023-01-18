@@ -1,12 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Chatbar from './chatbar'
 import { useAuth } from '../firebase';
 
-export default function Body({socket, authMessages}) {
+export default function Body({socket, authMessages, lastMsg, typeMsg}) {
     // const currentUser = useAuth();
     const [check, setCheck] = useState(false);
-    
     const [loggedUsers, setLoggedUsers] = useState([]);
+
+    const handleTyping = () => {
+        socket.emit("typing", localStorage.getItem("newUsername") + " is typing...")
+    }
+
     useEffect(() => {
         socket.on("newRegUserResponse", data => setLoggedUsers(data));
         if (loggedUsers.length > 0) {
@@ -37,8 +41,13 @@ export default function Body({socket, authMessages}) {
                                 </div>)
                             })}
                         </div>
+                        
                     )
-                }) : <div></div>}     
+                }) : <div></div>}
+            <div onKeyDown={handleTyping} >
+                <p>{typeMsg}</p>
+            </div>
+            <div ref={lastMsg}></div>
             <Chatbar socket={socket}/>
         </div>
     )

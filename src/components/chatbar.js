@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { useAuth } from '../firebase';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { BsGiftFill } from 'react-icons/bs';
@@ -8,6 +8,7 @@ import { FaSmileWink } from 'react-icons/fa';
 export default function Chatbar({socket}) {
     const [message, setMessage] = useState("")
     const currentUser = useAuth();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         //  if (message.trim() && currentUser) {
@@ -36,12 +37,14 @@ export default function Chatbar({socket}) {
         setMessage("");
     }
     return (
-        <form onSubmit={handleSubmit} className="chatbar">
-            <button className="startbtn"><BsFillPlusCircleFill/></button>
-            <input className="inputbar" data-testid="chatbar" onChange={(e) => setMessage(e.target.value)} value={message} placeholder="Message away..."></input>
-            <button className="innerbtn"><BsGiftFill/></button>
-            <button className="innerbtn"><AiOutlineGif/></button>
-            <button className="sendbtn"><FaSmileWink/></button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit} className="chatbar">
+                <button className="startbtn"><BsFillPlusCircleFill/></button>
+                <input className="inputbar" data-testid="chatbar" onChange={(e) => setMessage(e.target.value)} value={message} placeholder="Message away..."></input>
+                <button className="innerbtn"><BsGiftFill/></button>
+                <button className="innerbtn"><AiOutlineGif/></button>
+                <button className="sendbtn"><FaSmileWink/></button>
+            </form>
+        </div>
     )
 }

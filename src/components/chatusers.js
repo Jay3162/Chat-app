@@ -12,41 +12,37 @@ export default function Chatusers({socket}) {
     const [users, setUsers] = useState([])
     const [loggedUsers, setLoggedUsers] = useState([])
     const [check, setCheck] = useState(false);
-    // const [account, setAccount] = useState([]);
-    // const [count, setCount] = useState(null)
+    const [account, setAccount] = useState([]);
+    const [count, setCount] = useState(null)
 
     const navigate = useNavigate();
 
     const handleLeave = (event) => {
         event.preventDefault();
         // Logout();
+        
         localStorage.removeItem("user");
         navigate("/");
+        window.location.reload();
     }
-
-    useEffect(() => {
-        // retrieve the most recent messages 
-        socket.on("newUserResponse", data => setUsers(data));
-    }, [socket, users])
     useEffect(() => {
         socket.on("newRegUserResponse", data => setLoggedUsers(data));
         if (loggedUsers.length > 0) {
             setCheck(true);
         }
-
     }, [socket, loggedUsers, setCheck])
 
-    // useEffect(() => {
-    //     for (let i = 0; i < loggedUsers.length; i++) {
-    //         if (currentUser.uid === loggedUsers[i].uid) {
-    //             setCount(i);
-    //             // setAccount(loggedUsers[i].newUsername);
-    //             setAccount(prev => [...prev, loggedUsers[count]]);
-    //             console.log(account)
-    //         }
-    //     }
+    useEffect(() => {
+        for (let i = 0; i < loggedUsers.length; i++) {
+            if (socket.id === loggedUsers[i].id) {
+                setCount(i);
+                // setAccount(loggedUsers[i].newUsername);
+                setAccount(prev => [...prev, loggedUsers[count]]);
+                console.log(account)
+            }
+        }
         
-    // }, [loggedUsers, count])
+    }, [loggedUsers, count])
 
     // useEffect(() => {
     //     window.addEventListener('beforeunload', () => {
@@ -61,9 +57,9 @@ export default function Chatusers({socket}) {
                 <div className="user">
                     {/* render username of current user */}
                     <div className="user-wrapper">
-                        {check ? <div>{loggedUsers.map((users, i) => {
+                        {check ? <div>{loggedUsers.map((users) => {
                             return (
-                            <div className="user-inner-wrapper" key={i}>
+                            <div className="user-inner-wrapper" key={users.socketID}>
                                 <img className="profile-pic" src="images/placeholder-profile-pic.png" alt="profile-pic"/>
                                 <p data-testid="user">{users.newUsername}</p>
                             </div>)
@@ -81,7 +77,7 @@ export default function Chatusers({socket}) {
                         {check ? <div className="user">
                             <div className="user-data">
                                 <img className="profile-pic-sml" src="images/placeholder-profile-pic.png" alt="profile-pic"/>
-                                <p className="user-title">{loggedUsers[0].newUsername}</p>
+                                <p className="user-title">{loggedUsers[0].newUsername}'s chat</p>
                             </div>
                         </div> : <div></div>}
                     </div>}
