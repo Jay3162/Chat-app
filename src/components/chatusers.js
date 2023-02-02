@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import { useAuth } from '../firebase';
+// import { useAuth } from '../firebase';
 import {MdHeadphones} from 'react-icons/md'
 import {FaMicrophone} from 'react-icons/fa'
 import {BsGearFill} from 'react-icons/bs'
-import { Logout } from '../firebase';
+// import { Logout } from '../firebase';
 import { useNavigate } from 'react-router';
 import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Chatusers({socket}) {
     // const currentUser = useAuth();
-    const [users, setUsers] = useState([])
     const [loggedUsers, setLoggedUsers] = useState([])
     const [check, setCheck] = useState(false);
     const [account, setAccount] = useState([]);
@@ -38,11 +37,10 @@ export default function Chatusers({socket}) {
                 setCount(i);
                 // setAccount(loggedUsers[i].newUsername);
                 setAccount(prev => [...prev, loggedUsers[count]]);
-                console.log(account)
             }
         }
         
-    }, [loggedUsers, count])
+    }, [loggedUsers, count, socket])
 
     // useEffect(() => {
     //     window.addEventListener('beforeunload', () => {
@@ -50,7 +48,7 @@ export default function Chatusers({socket}) {
     //             socket.emit('remove user', currentUser)
     //         }
     //     })
-    // }, [currentUser])
+    // }, [currentUser, socket])
     
     return (
         <div className="users-list">

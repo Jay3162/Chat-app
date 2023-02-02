@@ -13,7 +13,7 @@ export default function MainChat ({socket}) {
 
     useEffect(() => {
         socket.on("authResponse", data => setAuthMessages([...authMessages, data]))
-    })
+    }, [socket, authMessages])
 
     useEffect(() => {
         socket.on("typer", data => {

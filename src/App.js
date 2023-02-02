@@ -1,7 +1,7 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import MainChat from './components/main-chat';
 import Home from './pages/Home'
-import socketIO, { Socket } from 'socket.io-client';
+import socketIO from 'socket.io-client';
 import Register from './pages/signup';
 import Login from './pages/login';
 import Profile from './pages/profile';
